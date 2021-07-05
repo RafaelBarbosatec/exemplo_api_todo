@@ -55,16 +55,19 @@ class _HomePageState extends State<HomePage> {
                     return Card(
                       margin: EdgeInsets.all(10),
                       color: _getColor(todo.color),
-                      child: ListTile(
-                        title: Text(todo.title ?? ''),
-                        subtitle: Text(todo.description ?? ''),
-                        trailing: IconButton(
-                          onPressed: () {
-                            _showDialogDelete(controller, todo);
-                          },
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.red,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: ListTile(
+                          title: Text(todo.title ?? ''),
+                          subtitle: Text(todo.description ?? ''),
+                          trailing: IconButton(
+                            onPressed: () {
+                              _showDialogDelete(controller, todo);
+                            },
+                            icon: Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                            ),
                           ),
                         ),
                       ),
