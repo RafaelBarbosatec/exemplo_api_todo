@@ -43,37 +43,31 @@ class _HomePageState extends State<HomePage> {
           ),
           body: Stack(
             children: [
-              RefreshIndicator(
-                onRefresh: () {
-                  controller.loadTodoList();
-                  return Future.value();
-                },
-                child: ListView.builder(
-                  itemCount: controller.todoList.length,
-                  itemBuilder: (context, index) {
-                    final todo = controller.todoList[index];
-                    return Card(
-                      margin: EdgeInsets.all(10),
-                      color: _getColor(todo.color),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: ListTile(
-                          title: Text(todo.title ?? ''),
-                          subtitle: Text(todo.description ?? ''),
-                          trailing: IconButton(
-                            onPressed: () {
-                              _showDialogDelete(controller, todo);
-                            },
-                            icon: Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                            ),
+              ListView.builder(
+                itemCount: controller.todoList.length,
+                itemBuilder: (context, index) {
+                  final todo = controller.todoList[index];
+                  return Card(
+                    margin: EdgeInsets.all(10),
+                    color: _getColor(todo.color),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ListTile(
+                        title: Text(todo.title ?? ''),
+                        subtitle: Text(todo.description ?? ''),
+                        trailing: IconButton(
+                          onPressed: () {
+                            _showDialogDelete(controller, todo);
+                          },
+                          icon: Icon(
+                            Icons.delete,
+                            color: Colors.red,
                           ),
                         ),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
               if (controller.loading)
                 Center(
